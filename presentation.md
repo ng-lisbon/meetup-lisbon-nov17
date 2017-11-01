@@ -1,5 +1,3 @@
-<!-- $theme: default -->
-
 <!-- $size: 16:9 -->
 
 ![bg](images/slide_bg.png)
