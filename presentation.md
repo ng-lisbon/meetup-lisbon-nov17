@@ -174,3 +174,105 @@ $ ./node_modules/.bin/lb-sdk server/server.js client/src/app/shared/sdk
 
 # The Angular+LoopBack Seed
 
+---
+
+![bg](images/slide_bg.png)
+
+# Angular SDK + NGRX (Redux)
+```
+lb-sdk ... -l angular2 -d ng2web -n [ngrx|orm]
+```
+* Generates:
+  * Actions
+  * Effects
+  * Reducers*
+  * Guards and Resolvers
+  * ORM*
+  * Plugable State
+
+* only for orm flag
+
+---
+
+![bg](images/slide_bg.png)
+
+# Extendable NGRX
+
+* Actions: **Action**, **ActionSuccess**, **ActionFail**. With ```{meta: any}```.
+* Effects consume **Action** and dispatch **ActionSuccess** or **ActionFail**
+* Reducers consume **ActionSuccess**
+
+You can use any to create you own functionality with custom Effects and Reducers
+
+```typescript
+@Effect()
+public signupSuccess$ = this.actions$
+  .ofType(UserActionTypes.SIGNUP_SUCCESS)
+  .map((action: LoopbackAction) => new UserActions.login({
+    email: action.payload.credentials.email,
+    password: action.payload.credentials.password
+  }, ['user']))
+```
+* You can pass any **meta tag** to actions for extra functionality.
+* Meta tags will be pass on between actions
+
+---
+
+![bg](images/slide_bg.png)
+
+# Local database representation with ORM
+
+* One **Reducer** per **Model**
+* Relation's data resolved to it's **Reducer**
+* **ORM** query aggregates data from local **Store**
+
+```
+this.orm.Room.find({ include: ['messages'] })
+```
+```json
+[{
+  id: 1,
+  name: 'ng-lisbon',
+  messages: [{ id: 1, text: 'Hello NG-Lisbon' }]
+}]
+```
+```json
+rooms: { ids: [...], entities: {...} },
+messages: { ids: [...], entities: {...} }
+```
+
+---
+
+![bg](images/slide_bg.png)
+
+# ORM special meta tags
+
+* ```{ io: true }```
+  * tells **ORM** to **Sync** the query with the server using Fireloop Real-Time API
+* ```{ justCache: true }```
+  * uses only local **State** bypassing the query to the backend
+* ```{ resetStore: true }``` (comming soon)
+  * resets the **Store** before applying new **State**
+
+---
+
+![bg](images/slide_bg.png)
+
+# ORM by example
+
+```
+this.rooms$ = this.orm.Room.find({
+  where: {
+    name: { like: 'ng-lisbon' }
+  },
+  order: 'id DESC',
+  limit: 10,
+  include: ['categories', 'accounts', 'messages', 'likes']
+}, {
+  io: true
+})
+```
+
+* io meta tag tells ORM to sync the query with the server using Fireloop Real-Time API
+
+---
