@@ -31,8 +31,10 @@ Peter Bouda, peter.bouda@apiax.com
 * Web Developer since the 90s
 * LoopBack + Angular since 2015
 * Senior Web Architect at Apiax
+* Angular trainer at ng-lisbon.com
 * Standard password: *reactsucks*
 * The rest is LEGO
+* https://www.peterbouda.eu/
 
 ---
 
@@ -157,3 +159,18 @@ $ ./node_modules/.bin/lb-sdk server/server.js client/src/app/shared/sdk
 ---
 
 ![bg](images/slide_bg.png)
+
+# Access Control, Users and Roles
+
+---
+
+![bg](images/slide_bg.png)
+
+# Related models and queries
+
+---
+
+![bg](images/slide_bg.png)
+
+# The Angular+LoopBack Seed
+
