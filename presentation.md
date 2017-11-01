@@ -32,7 +32,6 @@ Peter Bouda, peter.bouda@apiax.com
 * LoopBack + Angular since 2015
 * Senior Web Architect at Apiax
 * Angular trainer at ng-lisbon.com
-* Standard password: *reactsucks*
 * The rest is LEGO
 * https://www.peterbouda.eu/
 
@@ -162,17 +161,47 @@ $ ./node_modules/.bin/lb-sdk server/server.js client/src/app/shared/sdk
 
 # Access Control, Users and Roles
 
+```
+{
+  "accessType": "WRITE",
+  "principalType": "ROLE",
+  "principalId": "$owner",
+  "permission": "ALLOW"
+}    
+```
+
+* LoopBack come with a User model and supports authentication
+* Authentication is also available in Angular SDK (```LoopBackAuth``` and ```UserApi``` services)
+* Built-in dynamic roles: $everyone, $authenticated, $unauthenticated, $owner
+* You can specify static user roles (e.g. 'admin') and dynamic role handlers (e.g. 'teamMember')
+* Access to REST endpoints and remote methods is controled via ACLs
+
 ---
 
 ![bg](images/slide_bg.png)
 
 # Related models and queries
 
+```
+this.orderApi.findById(id, { include: [ { relation: 'items',
+  scope: { order: 'id DESC' } } ] }).subscribe([...]);
+```
+
+* Create model relations with hasMany, hasOne, belongsTo, HasAndBelongsToMany, ...
+* LoopBack will publish REST endpoints for those
+  (```GET /<model1-name>/<instanceID>/<model2-name>```)
+* LoopBack adds helper methods to model class's prototype
+  (```order.items(function(err, items) { [...] })```)
+* Powerful `include` filter supports nested queries (compare GraphQL)
 ---
 
 ![bg](images/slide_bg.png)
 
 # The Angular+LoopBack Seed
+
+* Basic full-stack app with User registration, login and profile page
+* Extend to your needs!
+* https://github.com/ng-lisbon/angular-loopback-seed
 
 ---
 
