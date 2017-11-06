@@ -214,7 +214,7 @@ lb-sdk ... -l angular2 -d ng2web -n [ngrx|orm]
 * Generates:
   * Actions
   * Effects
-  * Reducers*
+  * Reducers
   * Guards and Resolvers
   * ORM*
   * Plugable State
