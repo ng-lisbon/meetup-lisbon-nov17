@@ -170,7 +170,7 @@ $ ./node_modules/.bin/lb-sdk server/server.js client/src/app/shared/sdk
 }    
 ```
 
-* LoopBack come with a User model and supports authentication
+* LoopBack comes with a User model and supports authentication
 * Authentication is also available in Angular SDK (```LoopBackAuth``` and ```UserApi``` services)
 * Built-in dynamic roles: $everyone, $authenticated, $unauthenticated, $owner
 * You can specify static user roles (e.g. 'admin') and dynamic role handlers (e.g. 'teamMember')
@@ -305,3 +305,15 @@ this.rooms$ = this.orm.Room.find({
 * io meta tag tells ORM to sync the query with the server using Fireloop Real-Time API
 
 ---
+
+![bg](images/slide_bg.png)
+
+<p style="text-align: center;">
+<img src="images/angular_loopback.png">
+</p>
+
+# Thanks!
+## Any questions?
+
+João Ribeiro, joao@altar.io
+Peter Bouda, peter.bouda@apiax.com
