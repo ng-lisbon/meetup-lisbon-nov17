@@ -20,7 +20,10 @@ Peter Bouda, peter.bouda@apiax.com
 
 # About João
 
-* Add description
+* Full-stack development with Angular and Loopback for five years
+* Partner and CTO at Altar.io
+* Open Source Developer and Evangelist
+* https://github.com/JonnyBGod
 
 ---
 
